@@ -9,10 +9,10 @@ class BAdam(Optimizer):
     1. decoupled weight decay (as in AdamW [2])
     2. epsilon is inside sqrt to avoid NaN in mixed precision
         default value is much larger than in Adam to reduce 'adaptivity' it leads to better and wider optimums [3]
-        large epslion works better than `amsgrad` version of Adam
+        large epsilon works better than `amsgrad` version of Adam
     3. `exp_avg_sq` inits with large value, rather than with zeros. this removes the need for lr warmup and does the same
-        thing as all the tricks from Radam [4].
-    4. Removed bias correction. It's not needed if exp_avg_sq is correcly initialized
+        thing as all the tricks from RAdam [4].
+    4. Removed bias correction. It's not needed if exp_avg_sq is correctly initialized
 
     Args:
         params (iterable): iterable of parameters to optimize or dicts defining
@@ -71,7 +71,7 @@ class BAdam(Optimizer):
             for p in group["params"]:
                 if p.grad is not None:
                     if p.grad.is_sparse:
-                        raise RuntimeError("AdamW does not support sparse gradients")
+                        raise RuntimeError("BAdam does not support sparse gradients")
 
                     # Perform stepweight decay
                     p.mul_(1 - group["lr"] * group["weight_decay"])
