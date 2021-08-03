@@ -10,7 +10,7 @@ Modification of Adam [1] optimizer with increased stability and better performan
 Default values for this optmizer were tuned on Imagenet and work as good baseline for other computer vision tasks. Try them as is, before further tuning. 
 
 # Installation
-pip install git+https://github.com/bonlime/badam.git@master
+`pip install git+https://github.com/bonlime/badam.git@master`
 
 ### Reference:  
 [1] Adam: A Method for Stochastic Optimization  
